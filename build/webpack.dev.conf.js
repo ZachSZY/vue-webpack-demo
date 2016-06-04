@@ -28,7 +28,16 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
+      hash: true,
+      chunks: ['app'],//需要引入的chunk，不配置就会引入所有页面的资源      
       inject: true
-    })
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'todo.html',
+      template: 'todo.html',
+      hash: true,
+      chunks: ['todo'],//需要引入的chunk，不配置就会引入所有页面的资源      
+      inject: true
+    })    
   ]
 })
