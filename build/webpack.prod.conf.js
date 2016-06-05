@@ -46,7 +46,7 @@ module.exports = merge(baseWebpackConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.build.index,
-      template: 'index.html',
+      template: 'src/views/index.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -60,7 +60,7 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: 'todo.html',
-      template: 'todo.html',
+      template: 'src/views/todo.html',
       inject: true,
       minify: {
         removeComments: true,

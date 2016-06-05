@@ -29,14 +29,14 @@ module.exports = merge(baseWebpackConfig, {
     //HtmlWebpackPlugin，模板生成相关的配置，每个对于一个页面的配置，有几个写几个
     new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
       filename: 'index.html', //生成的html存放路径，相对于path
-      template: 'index.html', //html模板路径
+      template: 'src/views/index.html', //html模板路径
       hash: true, //为静态资源生成hash值
       chunks: ['app'],//需要引入的chunk，不配置就会引入所有页面的资源      
       inject: true //js插入的位置，true/'head'/'body'/false
     }),
     new HtmlWebpackPlugin({
       filename: 'todo.html', //生成的html存放路径，相对于path
-      template: 'todo.html', //html模板路径
+      template: 'src/views/todo.html', //html模板路径
       hash: true, //为静态资源生成hash值
       chunks: ['todo'],//需要引入的chunk，不配置就会引入所有页面的资源      
       inject: true //js插入的位置，true/'head'/'body'/false
