@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p>
-      TODO component
+      CARD component
     </p>
 
   </div>

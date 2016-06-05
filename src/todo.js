@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import Todo from './Todo'
+import Card from './components/Card'
 require('./assets/todo.css')
 
 /* eslint-disable no-new */
 new Vue({
   el: 'body',
-  components: { Todo }
+  components: { Card }
 })
