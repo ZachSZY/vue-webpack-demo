@@ -6,7 +6,7 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: {  //配置入口文件，有几个写几个
-    app: './src/scripts/main.js',
+    main: './src/scripts/main.js',
     todo: './src/scripts/todo.js'
   },
   output: {

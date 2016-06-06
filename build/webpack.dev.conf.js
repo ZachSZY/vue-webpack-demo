@@ -31,7 +31,7 @@ module.exports = merge(baseWebpackConfig, {
       filename: 'index.html', //生成的html存放路径，相对于path
       template: 'src/views/index.html', //html模板路径
       hash: true, //为静态资源生成hash值
-      chunks: ['app'],//需要引入的chunk，不配置就会引入所有页面的资源      
+      chunks: ['main'],//需要引入的chunk，不配置就会引入所有页面的资源      
       inject: true //js插入的位置，true/'head'/'body'/false
     }),
     new HtmlWebpackPlugin({

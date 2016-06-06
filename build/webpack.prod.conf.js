@@ -47,6 +47,8 @@ module.exports = merge(baseWebpackConfig, {
         ? 'index.html'
         : config.build.index,
       template: 'src/views/index.html',
+      hash: true, //为静态资源生成hash值
+      chunks: ['main'],//需要引入的chunk，不配置就会引入所有页面的资源      
       inject: true,
       minify: {
         removeComments: true,
@@ -61,6 +63,8 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'todo.html',
       template: 'src/views/todo.html',
+      hash: true, //为静态资源生成hash值
+      chunks: ['todo'],//需要引入的chunk，不配置就会引入所有页面的资源      
       inject: true,
       minify: {
         removeComments: true,
