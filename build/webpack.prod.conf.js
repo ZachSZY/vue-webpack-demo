@@ -17,8 +17,8 @@ module.exports = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    filename: utils.assetsPath('scripts/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('scripts/[id].[chunkhash].js')
   },
   vue: {
     loaders: utils.cssLoaders({
@@ -38,7 +38,7 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+    new ExtractTextPlugin(utils.assetsPath('styles/[name].[contenthash].css')),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
@@ -48,33 +48,33 @@ module.exports = merge(baseWebpackConfig, {
         : config.build.index,
       template: 'src/views/index.html',
       hash: true, //为静态资源生成hash值
-      chunks: ['main'],//需要引入的chunk，不配置就会引入所有页面的资源      
+      // chunks: ['manifest', 'vendor', 'main'],//需要引入的chunk，不配置就会引入所有页面的资源      
       inject: true,
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      }
     }),
     new HtmlWebpackPlugin({
       filename: 'todo.html',
       template: 'src/views/todo.html',
       hash: true, //为静态资源生成hash值
-      chunks: ['todo'],//需要引入的chunk，不配置就会引入所有页面的资源      
+      chunks: ['manifest', 'vendor', 'todo'],//需要引入的chunk，不配置就会引入所有页面的资源      
       inject: true,
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      }
     }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
