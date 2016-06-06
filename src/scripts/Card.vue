@@ -29,7 +29,7 @@
         v-model="currentBranch">
       <label :for="branch">{{branch}}</label>
     </template>
-    <p>vuejs/vue@{{currentBranch}}</p>
+    <p>vuejs/vue@{{currentBranch}} [{{ countOfCommits }}]</p>
     <ul>
       <li v-for="record in commits">
         <a :href="record.html_url" target="_blank" class="commit">{{record.sha.slice(0, 7)}}</a>
@@ -74,6 +74,12 @@ export default {
     },
     formatDate: function (v) {
       return v.replace(/T|Z/g, ' ')
+    }
+  },
+
+  computed: {
+    countOfCommits: function () {
+      return this.commits.length + ' commit(s)'
     }
   },
 
