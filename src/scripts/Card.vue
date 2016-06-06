@@ -67,6 +67,16 @@ export default {
     currentBranch: 'fetchData'
   },
 
+  filters: {
+    truncate: function (v) {
+      var newline = v.indexOf('\n')
+      return newline > 0 ? v.slice(0, newline) : v
+    },
+    formatDate: function (v) {
+      return v.replace(/T|Z/g, ' ')
+    }
+  },
+
   methods: {
     addTodo: function () {
       this.todos.push({text: this.newTodo})
