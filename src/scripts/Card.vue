@@ -38,6 +38,10 @@
         at <span class="date">{{record.commit.author.date | formatDate}}</span>
       </li>
     </ul>
+
+    <button v-on:click="fetchJenkins">Jenkins Ajax</button>
+
+    <iframe id="ifm" src="http://20.26.20.103:8800/api/json?pretty=true"></iframe>
   </div>  
 </template>
 
@@ -63,6 +67,7 @@ export default {
   created: function () {
     this.fetchData()
   },
+
   watch: {
     currentBranch: 'fetchData'
   },
@@ -112,6 +117,29 @@ export default {
       })
       .always(function () {
         console.log('complete')
+      })
+    },
+
+    fetchJenkins: function () {
+      $.ajax({
+        method: 'GET',
+        url: 'http://127.0.0.1:8000/',
+        dataType: 'jsonp',
+        jsonpCallback: 'callback',
+        data: {}
+      })
+      .done(function (data) {
+        console.log('done')
+        console.log(data)
+        // self.commits = data
+      })
+      .fail(function (e, data) {
+        console.log('error')
+        console.log(data)
+      })
+      .always(function (e, data) {
+        console.log('complete')
+        console.log(data)
       })
     }
   }
