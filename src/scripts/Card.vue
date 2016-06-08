@@ -47,6 +47,8 @@
 
 <script>
 var $ = require('jquery')
+var js = require('./fixture.json')
+console.warn(js)
 
 export default {
   data () {
