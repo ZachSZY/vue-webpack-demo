@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img class="logo" src="../assets/logo.png">
-    <hello></hello>
+    <hello msg="For the Horde!"></hello>
     <p>
       Welcome to your Vue.js app!
     </p>
