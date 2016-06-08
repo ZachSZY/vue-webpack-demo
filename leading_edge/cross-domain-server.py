@@ -8,15 +8,22 @@ PORT_NUMBER = 8000
 #This class will handles any incoming request from
 #the browser 
 class myHandler(BaseHTTPRequestHandler):
-	
-	#Handler for the GET requests
 	def do_GET(self):
 		self.send_response(200)
 		self.send_header('Content-type','application/javascript')
 		self.end_headers()
 		# Send the html message
 		self.wfile.write('callback(%s)' % json.dumps([1,2,3]))
-		# self.wfile.write('alert("JSONP")')
+		return
+
+	#Handler for the POST requests
+	def do_POST(self):
+		self.send_response(200)
+		self.send_header('Content-type','application/json')
+		self.send_header('Access-Control-Allow-Origin','*')
+		self.end_headers()
+		# Send the html message
+		self.wfile.write(json.dumps([1,2,3]))
 		return
 
 try:
