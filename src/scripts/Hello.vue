@@ -1,12 +1,31 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>Hello {{ msg }}</h1>
+    <Azeroth :money.sync="total"></Azeroth>
+    <Draenor :money.sync="total"></Draenor>
   </div>
 </template>
 
 <script>
+import Azeroth from './Azeroth'
+import Draenor from './Draenor'
+
 export default {
-  props: ['msg'],
+  components: {
+    Azeroth,
+    Draenor
+  },
+  props: {
+    total: {
+      type: Number
+    },
+    msg: {
+      type: String
+    }
+  },
+  created: function () {
+    // this.total = 100
+  },
   data () {
     return {
       // note: changing this line won't causes changes
@@ -14,6 +33,12 @@ export default {
       // preserves its current state and we are modifying
       // its initial state.
       // msg: 'Hello World!'
+      username: 'Thrall'
+    }
+  },
+  methods: {
+    enterDarkPortal: function (loc) {
+      this.msg = loc
     }
   }
 }
