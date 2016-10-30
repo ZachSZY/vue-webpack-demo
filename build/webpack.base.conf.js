@@ -7,7 +7,8 @@ var webpack = require('webpack')
 module.exports = {
   entry: {  //配置入口文件，有几个写几个
     main: './src/scripts/main.js',
-    todo: './src/scripts/todo.js'
+    todo: './src/scripts/todo.js',
+    travis: './src/scripts/travis.js'
   },
   output: {
     path: config.build.assetsRoot,  //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它

@@ -76,6 +76,22 @@ module.exports = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       }
     }),
+    new HtmlWebpackPlugin({
+      filename: 'travisci.html',
+      template: 'src/views/travisci.html',
+      hash: true, //为静态资源生成hash值
+      chunks: ['manifest', 'vendor', 'travis'],//需要引入的chunk，不配置就会引入所有页面的资源      
+      inject: true,
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      }
+    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
