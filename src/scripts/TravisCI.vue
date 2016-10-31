@@ -4,11 +4,12 @@
     <h2 id="datetime">{{now | formatDate}}</h2>
     <ul v-for="branch in branches">
         <li>
-          <p><b>{{branch}} </b><img src="https://travis-ci.org/mebusw/CSD-training-prj.svg?branch={{branch}}" alt="build:passed"></p>
+          <hr>
+          <p class="branch"><b>{{branch}} </b><img src="https://travis-ci.org/mebusw/CSD-training-prj.svg?branch={{branch}}" alt="build:passed"></p>
           <p><a :href="commits[branch].html_url" target="_blank" class="commit">{{commits[branch].sha.slice(0, 7)}}</a>
-          - <span class="message">{{commits[branch].message | truncate}}</span><br>
-          by <span class="author">{{commits[branch].author.name}}</span>
-          at <span class="date">{{commits[branch].author.date | formatDate}}</span>
+          - <span class="message">{{commits[branch].commit.message | truncate}}</span><br>
+          by <span class="author">{{commits[branch].commit.author.name}}</span>
+          at <span class="date">{{commits[branch].commit.author.date | formatDate}}</span>
           </p>
         </li>
     </ul>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 var $ = require('jquery')
 $('')
 
@@ -24,7 +26,7 @@ export default {
     return {
       branches: ['master', 'csharp-oct', 'csharp-jpx', 'java-monkey', 'java-eas'],
       now: '',
-      commits: {master: {sha: '1234567890', message: 'xxxxxxxxxx', author: {name: 'tom', date: ''}}}
+      commits: {master: {sha: '1234567890', message: 'xxxxxxxxxx', author: {name: 'tom', date: ''}}, 'csharp-jpx': null}
     }
   },
 
@@ -67,14 +69,16 @@ export default {
           data: {}
         })
         .done(function (data) {
-          console.log('done')
-          self.commits[branch] = data
+          console.log(branch)
+          // self.commits[branch] = data[0]
+          Vue.set(self.commits, branch, data[0])
+          console.log(self.commits[branch])
         })
         .fail(function () {
-          console.log('error')
+          // console.log('error')
         })
         .always(function () {
-          console.log('complete')
+          // console.log('complete')
         })
       })
     }
@@ -87,7 +91,7 @@ h1 {
   color: black;
 }
 
-#ajax {
+.branch {
   font-family: 'Helvetica', Arial, sans-serif;
 }
 a {
