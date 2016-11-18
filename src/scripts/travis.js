@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import Travisci from './Travisci'
+import TravisCI from './TravisCI'
 
 /* eslint-disable no-new */
 new Vue({
   el: 'body',
-  components: { Travisci }
+  components: { TravisCI }
 })
