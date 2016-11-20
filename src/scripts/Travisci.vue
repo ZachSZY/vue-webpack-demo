@@ -1,6 +1,5 @@
 <template>
     <h1>Travis-CI for CSD</h1>
-
     <h2 id="datetime">{{now | formatDate}}</h2>
     <ul v-for="branch in branches">
         <li>
