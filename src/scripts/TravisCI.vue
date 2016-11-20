@@ -24,7 +24,7 @@ $('')
 export default {
   data () {
     return {
-      branches: ['master', 'csharp-oct', 'csharp-jpx', 'java-monkey', 'java-eas'],
+      branches: ['master', 'csharp-2016Nov', 'java-2016Nov', 'cplusplus-2016Nov'],
       now: '',
       commits: {master: {sha: '1234567890', message: 'xxxxxxxxxx', author: {name: 'tom', date: ''}}, 'csharp-jpx': null}
     }
